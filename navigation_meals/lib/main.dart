@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './category_meals.dart';
 import './categories_screen.dart';
 
 void main() {
@@ -14,24 +15,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Navigation Meals App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Meals App'),
-        centerTitle: true,
-      ),
-      body: CategoriesScreen(),
+          primarySwatch: Colors.pink,
+          canvasColor: Color.fromRGBO(225, 224, 229, 1),
+          fontFamily: 'VarelaRound',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              bodySmall: const TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              titleSmall: const TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'AlegreyaSans',
+                  fontWeight: FontWeight.bold))),
+      // home: const CategoriesScreen(),
+      routes: {
+        '/': (context) => CategoriesScreen(),
+        '/category-meal': (context) => CategoryMeals()
+      },
     );
   }
 }
