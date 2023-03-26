@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/widgets/main_drawer.dart';
 import '/screens/categories_screen.dart';
 import '/screens/favourites_screen.dart';
 
@@ -31,6 +32,7 @@ class _TabScreenState extends State<TabScreen> {
         centerTitle: true,
       ),
       body: _screenList[_selectedPageIndex]['screen'] as Widget,
+      drawer: MainDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,
         backgroundColor: Theme.of(context).canvasColor,
