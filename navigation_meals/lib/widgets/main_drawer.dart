@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
-  Widget listTileBuilder(String title, IconData icon) {
+  Widget listTileBuilder(String title, IconData icon, VoidCallback tileClick) {
     return ListTile(
       leading: Icon(
         icon,
@@ -17,7 +17,7 @@ class MainDrawer extends StatelessWidget {
             fontSize: 24,
             fontFamily: 'AlegreyaSans'),
       ),
-      onTap: (() {}),
+      onTap: tileClick,
     );
   }
 
@@ -43,8 +43,14 @@ class MainDrawer extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          listTileBuilder('Meals', Icons.restaurant),
-          listTileBuilder('Settings', Icons.settings)
+          listTileBuilder('Profile', Icons.account_circle_outlined, () {
+            Navigator.pop(context);
+            Navigator.of(context).pushNamed('/profile');
+          }),
+          listTileBuilder('Filters', Icons.settings, () {
+            Navigator.pop(context);
+            Navigator.of(context).pushNamed('/filters');
+          })
         ],
       ),
     );
